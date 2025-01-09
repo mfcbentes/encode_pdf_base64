@@ -12,6 +12,7 @@ services:
       - LD_LIBRARY_PATH=/opt/oracle
     volumes:
       - ./input:/app/input
+      - ./output:/app/output
     networks:
       - app-net
     dns:
