@@ -1,0 +1,22 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8081"
+    container_name: encode-pdf-base64
+    env_file:
+      - .env # Carrega as variáveis de ambiente do arquivo .env
+    environment:
+      - LD_LIBRARY_PATH=/opt/oracle
+    volumes:
+      - ./input:/app/input
+    networks:
+      - app-net
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
+networks:
+  app-net:
+    driver: bridge
